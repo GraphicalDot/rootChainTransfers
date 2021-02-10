@@ -4,3 +4,15 @@ type Gravatar @entity {
   displayName: String!
   imageUrl: String!
 }
+
+
+
+
+
+type RootERC20Transfer @entity {
+  id: ID!
+  sender: Bytes! 
+  recipient: Bytes! 
+  amount: BigInt!;
+  predicateAddress: Bytes!
+}
