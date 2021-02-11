@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 description: Transfer events generated from the root contracts on ethereum
-repository: https://github.com/graphprotocol/example-subgraph
+repository: https://github.com/GraphicalDot/rootChainTransfers
 schema:
   file: ./schema.graphql
 dataSources:
@@ -24,7 +24,7 @@ dataSources:
           file: ./abis/ERC20Predicate.json
       callHandlers:
         - function: exitTokens(address,address,bytes)
-          handler: handleCreateGravatar
+          handler: handleNewERC20PredicateTransfer
 
 
   - kind: ethereum/contract
