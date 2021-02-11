@@ -42,39 +42,56 @@ export class Withdrawal extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get sender(): Bytes {
-    let value = this.get("sender");
+  get rootToken(): Bytes | null {
+    let value = this.get("rootToken");
+    if (value === null || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set rootToken(value: Bytes | null) {
+    if (value === null) {
+      this.unset("rootToken");
+    } else {
+      this.set("rootToken", Value.fromBytes(value as Bytes));
+    }
+  }
+
+  get predicateType(): string {
+    let value = this.get("predicateType");
+    return value.toString();
+  }
+
+  set predicateType(value: string) {
+    this.set("predicateType", Value.fromString(value));
+  }
+
+  get log(): Bytes {
+    let value = this.get("log");
     return value.toBytes();
   }
 
-  set sender(value: Bytes) {
-    this.set("sender", Value.fromBytes(value));
+  set log(value: Bytes) {
+    this.set("log", Value.fromBytes(value));
   }
 
-  get recipient(): Bytes {
-    let value = this.get("recipient");
-    return value.toBytes();
-  }
-
-  set recipient(value: Bytes) {
-    this.set("recipient", Value.fromBytes(value));
-  }
-
-  get amount(): BigInt {
-    let value = this.get("amount");
+  get timestamp(): BigInt {
+    let value = this.get("timestamp");
     return value.toBigInt();
   }
 
-  set amount(value: BigInt) {
-    this.set("amount", Value.fromBigInt(value));
+  set timestamp(value: BigInt) {
+    this.set("timestamp", Value.fromBigInt(value));
   }
 
-  get predicateAddress(): Bytes {
-    let value = this.get("predicateAddress");
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
     return value.toBytes();
   }
 
-  set predicateAddress(value: Bytes) {
-    this.set("predicateAddress", Value.fromBytes(value));
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
   }
 }

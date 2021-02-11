@@ -2,8 +2,9 @@
 
 type Withdrawal @entity {
   id: ID!
-  sender: Bytes! 
-  recipient: Bytes! 
-  amount: BigInt!
-  predicateAddress: Bytes!
+  rootToken: Bytes
+  predicateType: String!
+  log: Bytes!
+  timestamp: BigInt!
+  transactionHash: Bytes!
 }
