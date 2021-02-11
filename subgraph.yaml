@@ -1,5 +1,5 @@
 specVersion: 0.0.2
-description: Gravatar for Ethereum
+description: Transfer events generated from the root contracts on ethereum
 repository: https://github.com/graphprotocol/example-subgraph
 schema:
   file: ./schema.graphql
@@ -9,7 +9,7 @@ dataSources:
     name: ERC20Predicate
     network: goerli
     source:
-      address: 0xdD6596F2029e6233DEFfaCa316e6A95217d4Dc34
+      address: "0xdD6596F2029e6233DEFfaCa316e6A95217d4Dc34"
       abi: ERC20Predicate
       startBlock: 3000766
     mapping:
@@ -22,16 +22,16 @@ dataSources:
       abis:
         - name: ERC20Predicate
           file: ./abis/ERC20Predicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
-          handler: handleNewERC20PredicateTransfer
+      callHandlers:
+        - function: exitTokens(address,address,bytes)
+          handler: handleCreateGravatar
 
 
   - kind: ethereum/contract
     name: ERC721Predicate
     network: goerli
     source:
-      address: 0x74D83801586E9D3C4dc45FfCD30B54eA9C88cf9b
+      address: "0x74D83801586E9D3C4dc45FfCD30B54eA9C88cf9b"
       abi: ERC721Predicate
       startBlock: 3000770
     mapping:
@@ -44,15 +44,15 @@ dataSources:
       abis:
         - name: ERC721Predicate
           file: ./abis/ERC721Predicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
+      callHandlers:
+        - function: exitTokens(address,address,bytes)
           handler: handleNewERC721PredicateTransfer
 
   - kind: ethereum/contract
     name: ERC1155Predicate
     network: goerli
     source:
-      address: 0xB19a86ba1b50f0A395BfdC3557608789ee184dC8      
+      address: "0xB19a86ba1b50f0A395BfdC3557608789ee184dC8"      
       abi: ERC1155Predicate
       startBlock: 3000774
     mapping:
@@ -65,8 +65,8 @@ dataSources:
       abis:
         - name: ERC1155Predicate
           file: ./abis/ERC1155Predicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
+      callHandlers:
+        - function: exitTokens(address,address,bytes)
           handler: handleNewERC1155PredicateTransfer
 
 
@@ -74,7 +74,7 @@ dataSources:
     name: EtherPredicate
     network: goerli
     source:
-      address: 0xe2B01f3978c03D6DdA5aE36b2f3Ac0d66C54a6D5
+      address: "0xe2B01f3978c03D6DdA5aE36b2f3Ac0d66C54a6D5"
       abi: EtherPredicate
       startBlock: 3000777
     mapping:
@@ -87,17 +87,16 @@ dataSources:
       abis:
         - name: EtherPredicate
           file: ./abis/EtherPredicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
+      callHandlers:
+        - function: exitTokens(address,address,bytes)
           handler: handleNewEtherPredicateTransfer
-      file: ./src/mapping.ts
 
 
   - kind: ethereum/contract
     name: MintableERC721Predicate
     network: goerli
     source:
-      address: 0x56E14C4C1748a818a5564D33cF774c59EB3eDF59      
+      address: "0x56E14C4C1748a818a5564D33cF774c59EB3eDF59"      
       abi: MintableERC721Predicate
       startBlock: 3129918
     mapping:
@@ -110,6 +109,6 @@ dataSources:
       abis:
         - name: MintableERC721Predicate
           file: ./abis/MintableERC721Predicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
+      callHandlers:
+        - function: exitTokens(address,address,bytes)
           handler: handleNewMintableERC721PredicateTransfer

@@ -2,8 +2,8 @@
 
 import {Withdrawal} from '../../generated/schema'
 
+import { ExitTokensCall } from '../../generated/EtherPredicate/EtherPredicate'
 
-
-export function handleNewEtherPredicateTransfer(event: NewTransfer): void {
+export function handleNewEtherPredicateTransfer(event: ExitTokensCall): void {
 }
 

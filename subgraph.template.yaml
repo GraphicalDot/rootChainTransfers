@@ -9,7 +9,7 @@ dataSources:
     name: ERC20Predicate
     network: {{network}}
     source:
-      address: {{contracts.erc20Predicate.address}}
+      address: "{{contracts.erc20Predicate.address}}"
       abi: ERC20Predicate
       startBlock: {{contracts.erc20Predicate.startBlock}}
     mapping:
@@ -22,16 +22,16 @@ dataSources:
       abis:
         - name: ERC20Predicate
           file: ./abis/ERC20Predicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
-          handler: handleNewERC20PredicateTransfer
+      callHandlers:
+        - function: exitTokens(address,address,bytes)
+          handler: handleCreateGravatar
 
 
   - kind: ethereum/contract
     name: ERC721Predicate
     network: {{network}}
     source:
-      address: {{contracts.erc721Predicate.address}}
+      address: "{{contracts.erc721Predicate.address}}"
       abi: ERC721Predicate
       startBlock: {{contracts.erc721Predicate.startBlock}}
     mapping:
@@ -44,15 +44,15 @@ dataSources:
       abis:
         - name: ERC721Predicate
           file: ./abis/ERC721Predicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
+      callHandlers:
+        - function: exitTokens(address,address,bytes)
           handler: handleNewERC721PredicateTransfer
 
   - kind: ethereum/contract
     name: ERC1155Predicate
     network: {{network}}
     source:
-      address: {{contracts.erc1155Predicate.address}}      
+      address: "{{contracts.erc1155Predicate.address}}"      
       abi: ERC1155Predicate
       startBlock: {{contracts.erc1155Predicate.startBlock}}
     mapping:
@@ -65,8 +65,8 @@ dataSources:
       abis:
         - name: ERC1155Predicate
           file: ./abis/ERC1155Predicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
+      callHandlers:
+        - function: exitTokens(address,address,bytes)
           handler: handleNewERC1155PredicateTransfer
 
 
@@ -74,7 +74,7 @@ dataSources:
     name: EtherPredicate
     network: {{network}}
     source:
-      address: {{contracts.etherPredicate.address}}
+      address: "{{contracts.etherPredicate.address}}"
       abi: EtherPredicate
       startBlock: {{contracts.etherPredicate.startBlock}}
     mapping:
@@ -87,17 +87,16 @@ dataSources:
       abis:
         - name: EtherPredicate
           file: ./abis/EtherPredicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
+      callHandlers:
+        - function: exitTokens(address,address,bytes)
           handler: handleNewEtherPredicateTransfer
-      file: ./src/mapping.ts
 
 
   - kind: ethereum/contract
     name: MintableERC721Predicate
     network: {{network}}
     source:
-      address: {{contracts.erc721MintablePredicate.address}}      
+      address: "{{contracts.erc721MintablePredicate.address}}"      
       abi: MintableERC721Predicate
       startBlock: {{contracts.erc721MintablePredicate.startBlock}}
     mapping:
@@ -110,6 +109,6 @@ dataSources:
       abis:
         - name: MintableERC721Predicate
           file: ./abis/MintableERC721Predicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
+      callHandlers:
+        - function: exitTokens(address,address,bytes)
           handler: handleNewMintableERC721PredicateTransfer

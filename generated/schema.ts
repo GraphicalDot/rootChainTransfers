@@ -12,7 +12,7 @@ import {
   BigDecimal
 } from "@graphprotocol/graph-ts";
 
-export class Gravatar extends Entity {
+export class Withdrawal extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -20,17 +20,17 @@ export class Gravatar extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save Gravatar entity without an ID");
+    assert(id !== null, "Cannot save Withdrawal entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save Gravatar entity with non-string ID. " +
+      "Cannot save Withdrawal entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("Gravatar", id.toString(), this);
+    store.set("Withdrawal", id.toString(), this);
   }
 
-  static load(id: string): Gravatar | null {
-    return store.get("Gravatar", id) as Gravatar | null;
+  static load(id: string): Withdrawal | null {
+    return store.get("Withdrawal", id) as Withdrawal | null;
   }
 
   get id(): string {
@@ -42,30 +42,39 @@ export class Gravatar extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get owner(): Bytes {
-    let value = this.get("owner");
+  get sender(): Bytes {
+    let value = this.get("sender");
     return value.toBytes();
   }
 
-  set owner(value: Bytes) {
-    this.set("owner", Value.fromBytes(value));
+  set sender(value: Bytes) {
+    this.set("sender", Value.fromBytes(value));
   }
 
-  get displayName(): string {
-    let value = this.get("displayName");
-    return value.toString();
+  get recipient(): Bytes {
+    let value = this.get("recipient");
+    return value.toBytes();
   }
 
-  set displayName(value: string) {
-    this.set("displayName", Value.fromString(value));
+  set recipient(value: Bytes) {
+    this.set("recipient", Value.fromBytes(value));
   }
 
-  get imageUrl(): string {
-    let value = this.get("imageUrl");
-    return value.toString();
+  get amount(): BigInt {
+    let value = this.get("amount");
+    return value.toBigInt();
   }
 
-  set imageUrl(value: string) {
-    this.set("imageUrl", Value.fromString(value));
+  set amount(value: BigInt) {
+    this.set("amount", Value.fromBigInt(value));
+  }
+
+  get predicateAddress(): Bytes {
+    let value = this.get("predicateAddress");
+    return value.toBytes();
+  }
+
+  set predicateAddress(value: Bytes) {
+    this.set("predicateAddress", Value.fromBytes(value));
   }
 }

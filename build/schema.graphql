@@ -1,6 +1,9 @@
-type Gravatar @entity {
+
+
+type Withdrawal @entity {
   id: ID!
-  owner: Bytes!
-  displayName: String!
-  imageUrl: String!
+  sender: Bytes! 
+  recipient: Bytes! 
+  amount: BigInt!
+  predicateAddress: Bytes!
 }
