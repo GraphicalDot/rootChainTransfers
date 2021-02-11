@@ -1,5 +1,5 @@
 specVersion: 0.0.2
-description: Transfer events generated from the root contracts on ethereum
+description: Gravatar for Ethereum
 repository: https://github.com/graphprotocol/example-subgraph
 schema:
   file: ./schema.graphql
@@ -7,11 +7,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: ERC20Predicate
-    network: {{network}}
+    network: goerli
     source:
-      address: {{contracts.erc20Predicate.address}}
+      address: 0xdD6596F2029e6233DEFfaCa316e6A95217d4Dc34
       abi: ERC20Predicate
-      startBlock: {{contracts.erc20Predicate.startBlock}}
+      startBlock: 3000766
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -29,11 +29,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: ERC721Predicate
-    network: {{network}}
+    network: goerli
     source:
-      address: {{contracts.erc721Predicate.address}}
+      address: 0x74D83801586E9D3C4dc45FfCD30B54eA9C88cf9b
       abi: ERC721Predicate
-      startBlock: {{contracts.erc721Predicate.startBlock}}
+      startBlock: 3000770
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -50,11 +50,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: ERC1155Predicate
-    network: {{network}}
+    network: goerli
     source:
-      address: {{contracts.erc1155Predicate.address}}      
+      address: 0xB19a86ba1b50f0A395BfdC3557608789ee184dC8      
       abi: ERC1155Predicate
-      startBlock: {{contracts.erc1155Predicate.startBlock}}
+      startBlock: 3000774
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -72,11 +72,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: EtherPredicate
-    network: {{network}}
+    network: goerli
     source:
-      address: {{contracts.etherPredicate.address}}
+      address: 0xe2B01f3978c03D6DdA5aE36b2f3Ac0d66C54a6D5
       abi: EtherPredicate
-      startBlock: {{contracts.etherPredicate.startBlock}}
+      startBlock: 3000777
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -95,11 +95,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: MintableERC721Predicate
-    network: {{network}}
+    network: goerli
     source:
-      address: {{contracts.erc721MintablePredicate.address}}      
+      address: 0x56E14C4C1748a818a5564D33cF774c59EB3eDF59      
       abi: MintableERC721Predicate
-      startBlock: {{contracts.erc721MintablePredicate.startBlock}}
+      startBlock: 3129918
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
