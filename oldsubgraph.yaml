@@ -5,102 +5,23 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: ERC20Predicate
-    network: Goerli
+    name: Gravity
+    network: mainnet
     source:
-      address: '0x07f76e8EfaEAe05cb093AC79740e3546dC03FA93'
-      abi: ERC20Predicate
+      address: '0x2E645469f354BB4F5c8a05B3b30A929361cf77eC'
+      abi: Gravity
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - Withdrawal
+        - Gravatar
       abis:
-        - name: ERC20Predicate
-          file: ./abis/ERC20Predicate.json
+        - name: Gravity
+          file: ./abis/Gravity.json
       eventHandlers:
-        - event: Transfer(sender, recipient, amount)
-          handler: handleNewERC20PredicateTransfer
-      file: ./src/mapping.ts
-
-  - kind: ethereum/contract
-    name: ERC721Predicate
-    network: Goerli
-    source:
-      address: '0xb9B40c5a9614A40148cd11A494b00EE8E6f486E3'
-      abi: ERC721Predicate
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.4
-      language: wasm/assemblyscript
-      entities:
-        - Withdrawal
-      abis:
-        - name: ERC721Predicate
-          file: ./abis/ERC721Predicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
-          handler: handleNewERC721PredicateTransfer
-      file: ./src/mapping.ts
-
-  - kind: ethereum/contract
-    name: ERC1155Predicate
-    network: Goerli
-    source:
-      address: '0xe57f31d0E1320E5C69bC000044BD155Df3fe4FeE'
-      abi: ERC1155Predicate
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.4
-      language: wasm/assemblyscript
-      entities:
-        - Withdrawal
-      abis:
-        - name: ERC1155Predicate
-          file: ./abis/ERC1155Predicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
-          handler: handleNewERC1155PredicateTransfer
-      file: ./src/mapping.ts
-
-  - kind: ethereum/contract
-    name: EtherPredicate
-    network: Goerli
-    source:
-      address: '0xd8AA0d2C537137916E6A0ea4b2AFE96188884a84'
-      abi: EtherPredicate
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.4
-      language: wasm/assemblyscript
-      entities:
-        - Withdrawal
-      abis:
-        - name: EtherPredicate
-          file: ./abis/EtherPredicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
-          handler: handleNewEtherPredicateTransfer
-      file: ./src/mapping.ts
-
-
-  - kind: ethereum/contract
-    name: MintableERC721Predicate
-    network: Goerli
-    source:
-      address: '0x90445D7f2838198Dc8c034ac7F365E5d6144c90C'
-      abi: MintableERC721Predicate
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.4
-      language: wasm/assemblyscript
-      entities:
-        - Withdrawal
-      abis:
-        - name: MintableERC721Predicate
-          file: ./abis/MintableERC721Predicate.json
-      eventHandlers:
-        - event: Transfer(sender, recipient, amount)
-          handler: handleNewMintableERC721PredicateTransfer
+        - event: NewGravatar(uint256,address,string,string)
+          handler: handleNewGravatar
+        - event: UpdatedGravatar(uint256,address,string,string)
+          handler: handleUpdatedGravatar
       file: ./src/mapping.ts

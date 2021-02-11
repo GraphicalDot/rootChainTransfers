@@ -9,7 +9,7 @@ type Gravatar @entity {
 
 
 
-type RootERC20Transfer @entity {
+type Withdrawal @entity {
   id: ID!
   sender: Bytes! 
   recipient: Bytes! 
