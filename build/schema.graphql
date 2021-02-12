@@ -8,3 +8,11 @@ type Withdrawal @entity {
   timestamp: BigInt!
   transactionHash: Bytes!
 }
+
+
+type Rootexit @entity {
+  id: ID!
+  inputData: Bytes!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}

@@ -22,6 +22,10 @@
       "erc721MintablePredicate": {
         "address": "0x932532aA4c0174b8453839A6E44eE09Cc615F2b7",
         "startBlock": 10735465
+      },
+      "rootChainManager": {
+        "address": "0xA0c68C638235ee32657e8f720a23ceC1bFc77C77",
+        "startBlock": 10735437 
       }
   }
 }

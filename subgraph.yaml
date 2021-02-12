@@ -6,6 +6,28 @@ schema:
 dataSources:
 
   - kind: ethereum/contract
+    name: RootChainManager
+    network: mainnet
+    source:
+      address: "0xA0c68C638235ee32657e8f720a23ceC1bFc77C77"
+      abi: RootChainManager
+      startBlock: 10735437
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/mapping/rootchainmanager.ts      
+      entities:
+        - Rootexit
+      abis:
+        - name: RootChainManager
+          file: ./abis/RootChainManager.json
+      callHandlers:
+        - function: exit(bytes)
+          handler: handleRootChainManagerExits
+
+
+  - kind: ethereum/contract
     name: ERC20Predicate
     network: mainnet
     source:

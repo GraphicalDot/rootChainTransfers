@@ -95,3 +95,61 @@ export class Withdrawal extends Entity {
     this.set("transactionHash", Value.fromBytes(value));
   }
 }
+
+export class Rootexit extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save Rootexit entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save Rootexit entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("Rootexit", id.toString(), this);
+  }
+
+  static load(id: string): Rootexit | null {
+    return store.get("Rootexit", id) as Rootexit | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get inputData(): Bytes {
+    let value = this.get("inputData");
+    return value.toBytes();
+  }
+
+  set inputData(value: Bytes) {
+    this.set("inputData", Value.fromBytes(value));
+  }
+
+  get timestamp(): BigInt {
+    let value = this.get("timestamp");
+    return value.toBigInt();
+  }
+
+  set timestamp(value: BigInt) {
+    this.set("timestamp", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    return value.toBytes();
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
+}
