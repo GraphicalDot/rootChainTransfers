@@ -1,3 +1,11 @@
 # Example Subgraph
 
-An example to help you get started with The Graph. For more information see the docs on https://thegraph.com/docs/.
+Build completed: QmQK9r6aADosZt55FjqAyScyQqtninyYvLYdSpz4usV2mY
+
+Deployed to https://thegraph.com/explorer/subgraph/graphicaldot/Matictoeth
+
+Subgraph endpoints:
+Queries (HTTP):     https://api.thegraph.com/subgraphs/name/graphicaldot/matictoeth
+Subscriptions (WS): wss://api.thegraph.com/subgraphs/name/graphicaldot/matictoeth
+
+
